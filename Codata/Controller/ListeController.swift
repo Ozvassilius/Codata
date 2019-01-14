@@ -48,7 +48,12 @@ class ListeController: UIViewController {
         naleTF.text = nil
     }
 
-    
+    // Segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Article", let controller = segue.destination as? ArticleController {
+            controller.liste = sender as? Liste
+        }
+    }
     
 }
 
@@ -81,8 +86,13 @@ extension ListeController : UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "Article", sender: listes[indexPath.row])
+    }
+    
 }
 
+// TextField Extension
 extension ListeController : UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

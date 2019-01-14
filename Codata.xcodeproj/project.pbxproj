@@ -18,6 +18,9 @@
 		4397A5B621ECB06B00135C25 /* ListeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397A5B521ECB06B00135C25 /* ListeCell.swift */; };
 		4397A5B821ECB0A200135C25 /* ViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397A5B721ECB0A200135C25 /* ViewShadow.swift */; };
 		4397A5BA21ECBA4400135C25 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397A5B921ECBA4400135C25 /* Extensions.swift */; };
+		4397A5BC21ECEE2200135C25 /* ArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397A5BB21ECEE2200135C25 /* ArticleController.swift */; };
+		4397A5BE21ECEE3B00135C25 /* AddArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397A5BD21ECEE3B00135C25 /* AddArticleController.swift */; };
+		4397A5C021ECEE4F00135C25 /* AllArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397A5BF21ECEE4F00135C25 /* AllArticleController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		4397A5B521ECB06B00135C25 /* ListeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeCell.swift; sourceTree = "<group>"; };
 		4397A5B721ECB0A200135C25 /* ViewShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShadow.swift; sourceTree = "<group>"; };
 		4397A5B921ECBA4400135C25 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4397A5BB21ECEE2200135C25 /* ArticleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleController.swift; sourceTree = "<group>"; };
+		4397A5BD21ECEE3B00135C25 /* AddArticleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArticleController.swift; sourceTree = "<group>"; };
+		4397A5BF21ECEE4F00135C25 /* AllArticleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllArticleController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,9 @@
 			children = (
 				4397A5AE21EC101700135C25 /* MyTabBar.swift */,
 				4397A59A21EC0CB800135C25 /* ListeController.swift */,
+				4397A5BB21ECEE2200135C25 /* ArticleController.swift */,
+				4397A5BD21ECEE3B00135C25 /* AddArticleController.swift */,
+				4397A5BF21ECEE4F00135C25 /* AllArticleController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -186,11 +195,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4397A5B421EC2C1F00135C25 /* CoreDataHelper.swift in Sources */,
+				4397A5C021ECEE4F00135C25 /* AllArticleController.swift in Sources */,
 				4397A5B621ECB06B00135C25 /* ListeCell.swift in Sources */,
 				4397A5B821ECB0A200135C25 /* ViewShadow.swift in Sources */,
 				4397A5BA21ECBA4400135C25 /* Extensions.swift in Sources */,
+				4397A5BE21ECEE3B00135C25 /* AddArticleController.swift in Sources */,
 				4397A5A121EC0CB800135C25 /* Codata.xcdatamodeld in Sources */,
 				4397A59B21EC0CB800135C25 /* ListeController.swift in Sources */,
+				4397A5BC21ECEE2200135C25 /* ArticleController.swift in Sources */,
 				4397A59921EC0CB800135C25 /* AppDelegate.swift in Sources */,
 				4397A5AF21EC101700135C25 /* MyTabBar.swift in Sources */,
 			);
