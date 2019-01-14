@@ -21,8 +21,8 @@ class MyTabBar: UITabBarController {
         // tabBar.barTintColor = .yellow
         
         // tabBar transparent
-        tabBar.barTintColor = .clear // en juste clear on l'a en noir
-        tabBar.backgroundImage = UIImage() // la ca marche
+        //tabBar.barTintColor = .clear // en juste clear on l'a en noir
+        //tabBar.backgroundImage = UIImage() // la ca marche
     }
     
 
