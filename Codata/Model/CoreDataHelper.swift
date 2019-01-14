@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+typealias ListeCompletion = (_ listes: [Liste]?) -> Void
 
 class CoreDataHelper {
     
@@ -25,7 +26,7 @@ class CoreDataHelper {
         appDel.saveContext()
     }
     
-    // Sauvegarder dans CoreData
+    // Logique ENTITY Liste
     func saveListe(_ string : String?) {
         // on verifie qu'on a recup un texte et qu'il n'est pas vide
         guard let texte = string, texte != "" else {return}
@@ -38,6 +39,27 @@ class CoreDataHelper {
         print("liste sauvegardé")
     }
     
-    // Logique ENTITY Liste
+    func getListe(completion: ListeCompletion?)  {
+        
+        // on créé une fetch request
+        // requete des elements liste dans CoreData
+        let fetchRequest : NSFetchRequest<Liste> = Liste.fetchRequest()
+        
+        // on les tri
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        do {
+            let listes = try context.fetch(fetchRequest)
+            for l in listes {
+                print(l.name)
+            }
+            completion?(listes)
+        } catch  {
+            completion?(nil)
+            print(error.localizedDescription)
+        }
+        
+    }
     
 }
