@@ -19,6 +19,10 @@ class ListeController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+        naleTF.delegate = self
         updateListe()
         
     }
@@ -38,11 +42,51 @@ class ListeController: UIViewController {
     // mes actions
     
     @IBAction func addListe(_ sender:UIButton) {
+        view.endEditing(true)
         CoreDataHelper().saveListe(naleTF.text)
         updateListe()
+        naleTF.text = nil
     }
 
     
     
 }
 
+
+// Delegate et DataSouce
+extension ListeController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ListeCell") as? ListeCell {
+            cell.setupCell(liste: listes[indexPath.row])
+            return cell
+            
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let listeASupprimer = listes[indexPath.row]
+            listes.remove(at: indexPath.row)
+            CoreDataHelper().deleteListe(listeASupprimer)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+}
+
+extension ListeController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
