@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ListeController: UIViewController {
     
@@ -16,14 +17,15 @@ class ListeController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
 
     // mes actions
     
     @IBAction func addListe(_ sender:UIButton) {
-         
+        CoreDataHelper().saveListe(naleTF.text)
+        
     }
 }
 
