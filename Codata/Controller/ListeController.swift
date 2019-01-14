@@ -12,14 +12,15 @@ import CoreData
 class ListeController: UIViewController {
     
     @IBOutlet weak var  tableView : UITableView!
-    @IBOutlet weak var  holderView : UIView!
+    @IBOutlet weak var  holderView : ViewShadow!
     @IBOutlet weak var  naleTF: UITextField!
-    
+
     var listes : [Liste] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         updateListe()
+        
     }
 
     func updateListe()  {
@@ -40,6 +41,7 @@ class ListeController: UIViewController {
         CoreDataHelper().saveListe(naleTF.text)
         updateListe()
     }
+
     
     
 }

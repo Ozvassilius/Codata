@@ -22,7 +22,7 @@ class CoreDataHelper {
     }
     
     // Sauvegarder dans CoreData
-    func save () {
+    func save() {
         appDel.saveContext()
     }
     
@@ -52,7 +52,7 @@ class CoreDataHelper {
         do {
             let listes = try context.fetch(fetchRequest)
             for l in listes {
-                print(l.name)
+                print(l.name ?? "valeur par defaut")
             }
             completion?(listes)
         } catch  {
