@@ -11,12 +11,12 @@ import CoreData
 
 class ListeController: UIViewController {
     
-    @IBOutlet weak var  tableView : UITableView!
-    @IBOutlet weak var  holderView : ViewShadow!
-    @IBOutlet weak var  naleTF: UITextField!
-
-    var listes : [Liste] = []
-
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var holderView: ViewShadow!
+    @IBOutlet weak var naleTF: UITextField!
+    
+    var listes: [Liste] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -24,10 +24,9 @@ class ListeController: UIViewController {
         tableView.tableFooterView = UIView()
         naleTF.delegate = self
         updateListe()
-        
     }
-
-    func updateListe()  {
+    
+    func updateListe() {
         CoreDataHelper().getListe { (listes) in
             if listes != nil {
                 DispatchQueue.main.async {
@@ -35,31 +34,32 @@ class ListeController: UIViewController {
                     self.tableView.reloadData()
                 }
             }
-            
         }
     }
-
-    // mes actions
     
-    @IBAction func addListe(_ sender:UIButton) {
-        view.endEditing(true)
-        CoreDataHelper().saveListe(naleTF.text)
-        updateListe()
-        naleTF.text = nil
-    }
-
-    // Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Article", let controller = segue.destination as? ArticleController {
             controller.liste = sender as? Liste
         }
     }
     
+    @IBAction func addListe(_ sender: UIButton) {
+        view.endEditing(true)
+        CoreDataHelper().saveListe(naleTF.text)
+        updateListe()
+        naleTF.text = nil
+    }
+    
+    
 }
 
 
-// Delegate et DataSouce
-extension ListeController : UITableViewDelegate, UITableViewDataSource {
+
+
+//Delegate et DataSources
+
+extension ListeController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listes.count
     }
@@ -68,7 +68,6 @@ extension ListeController : UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ListeCell") as? ListeCell {
             cell.setupCell(liste: listes[indexPath.row])
             return cell
-            
         }
         return UITableViewCell()
     }
@@ -92,11 +91,11 @@ extension ListeController : UITableViewDelegate, UITableViewDataSource {
     
 }
 
-// TextField Extension
-extension ListeController : UITextFieldDelegate {
+extension ListeController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 }
+

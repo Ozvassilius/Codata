@@ -8,17 +8,23 @@
 
 import Foundation
 
+
 extension Date {
     
     func toString() -> String {
+        let formatter = DateFormatter()
+        let calendar = Calendar.current
         
-        let formatteur : DateFormatter = DateFormatter()
-        formatteur.dateStyle = .medium
-        formatteur.timeStyle = .short
-        return formatteur.string(from: self) // self etant donné qu'on est en une extension
+        if calendar.isDateInToday(self) {
+            formatter.timeStyle = .short
+            formatter.dateStyle = .none
+        } else {
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .none
+            
+        }
         
-       
+        return formatter.string(from: self)
     }
     
 }
-

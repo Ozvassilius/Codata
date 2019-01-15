@@ -10,14 +10,14 @@ import UIKit
 
 class ListeCell: UITableViewCell {
 
-    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var nameLBL: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     
     var liste : Liste!
     
     func setupCell(liste:Liste)  {
         self.liste = liste
-        nameLbl.text = self.liste.name
+        nameLBL.text = self.liste.name
         
         if self.liste.date != nil {
         dateLbl.text = "Créé le : " + self.liste.date!.toString()
